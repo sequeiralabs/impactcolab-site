@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — ImpactColab Ltd</title>
+
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="ImpactColab is a multidisciplinary consultancy built on a single conviction: that Africa's most pressing development challenges are solved by disciplined collaboration across disciplines, borders, and sectors.">
+    <meta name="keywords" content="about ImpactColab, team, mission, vision, company">
+    <meta name="author" content="ImpactColab Ltd">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://impactcolab.com/about.html">
+    <meta property="og:title" content="About — ImpactColab Ltd">
+    <meta property="og:description" content="Learn about ImpactColab Ltd — who we are, what drives us, and the team behind our work.">
+    <meta property="og:image" content="https://impactcolab.com/og-image.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About — ImpactColab Ltd">
+    <meta name="twitter:description" content="Learn about ImpactColab Ltd — who we are, what drives us, and the team behind our work.">
+    <meta name="twitter:image" content="https://impactcolab.com/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23ff3d00'/%3E%3Ctext x='50' y='65' font-family='Arial' font-size='38' font-weight='bold' fill='white' text-anchor='middle'%3EIC%3C/text%3E%3C/svg%3E">
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* About-page specific styles */
+        .about-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 4rem 4rem;
+        }
+
+        .about-hero-content {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .about-hero-content .hero-title {
+            font-size: clamp(3rem, 10vw, 8rem);
+        }
+
+        .about-section {
+            padding: 2rem 4rem;
+        }
+
+        .about-section:first-of-type {
+            padding-top: 8rem;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-body {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .about-body p + p {
+            margin-top: 1.5rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            padding: 2.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.4s ease;
+        }
+
+        .value-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .value-card:hover {
+            border-color: rgba(255, 61, 0, 0.3);
+            transform: translateY(-6px);
+        }
+
+        .value-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .value-desc {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            padding: 2.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.4s ease;
+        }
+
+        .team-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .team-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--card-border);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            border: 1px solid rgba(255, 61, 0, 0.2);
+        }
+
+        .team-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-role {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .team-bio {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 8rem 2rem 4rem;
+            }
+
+            .about-section {
+                padding: 2rem 2rem;
+            }
+
+            .values-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .values-grid,
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="logo">ImpactColab Ltd</a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="about.html" aria-current="page">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+            </button>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+        <a href="about.html">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="index.html#contact">Contact</a>
+    </div>
+
+    <main id="main-content">
+
+        <section class="about-section" aria-labelledby="what-title">
+            <div class="about-container">
+                <h2 class="section-title" id="what-title">What <span class="accent-text">ImpactColab</span> Is</h2>
+                <div class="about-body">
+                    <p>ImpactColab is a multidisciplinary consultancy built on a single conviction: that Africa's most pressing development challenges are not solved by isolated expertise, but by disciplined collaboration across disciplines, borders, and sectors.</p>
+                    <p>Founded and based in Nairobi, Kenya, ImpactColab operates at the intersection of insight and action. Our tagline — Turning Insight Into Impact — is not a slogan. It is a working principle. We exist to ensure that knowledge, research, and expertise translate into tangible outcomes for governments, investors, institutions, and communities across Africa.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" aria-labelledby="problem-title">
+            <div class="about-container">
+                <h2 class="section-title" id="problem-title">The Problem We <span class="accent-text">Address</span></h2>
+                <div class="about-body">
+                    <p>Across Africa, a set of interconnected gaps continues to limit the continent's ability to convert its human and natural potential into sustained progress.</p>
+                    <p>Expertise exists in abundance — but it is fragmented. Institutions commission research that never reaches decision-makers. Policies are designed without implementers in mind. Investment flows into sectors where local technical capacity is thin. And development initiatives end, leaving behind reports rather than results.</p>
+                    <p>The core problem is not a lack of talent or ambition. It is a lack of integration — between disciplines, between evidence and policy, between capital and competence. ImpactColab exists to close these gaps.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" aria-labelledby="philosophy-title">
+            <div class="about-container">
+                <h2 class="section-title" id="philosophy-title">Our Philosophy: <span class="accent-text">Collaborative by Design</span></h2>
+                <div class="about-body">
+                    <p>ImpactColab is built on the belief that the most durable development outcomes emerge from collaboration, not competition. We operate as a collective of practitioners — drawing on diverse expertise under one roof — because the challenges our clients face do not respect disciplinary boundaries.</p>
+                    <p>We do not hand over reports and walk away. We work alongside governments, development finance institutions, research bodies, and private sector partners as embedded implementation and advisory partners. Our measure of success is not the quality of our outputs, but the quality of the decisions and outcomes they enable.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" aria-labelledby="services-title">
+            <div class="about-container">
+                <h2 class="section-title" id="services-title">What We <span class="accent-text">Do</span></h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h3 class="value-title">Research &amp; Policy Advisory</h3>
+                        <p class="value-desc">We conduct applied research, evidence synthesis, and policy analysis across priority sectors including circular economy systems, agri-food value chains, e-waste, plastic and textile waste, and digital transformation. Our work is designed for decision-makers — produced to inform investment strategies, regulatory frameworks, and national development plans.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3 class="value-title">Technical Consultancy &amp; Implementation Support</h3>
+                        <p class="value-desc">We provide hands-on technical assistance across IT systems, legal frameworks, and built environment projects. From digital infrastructure design to regulatory compliance and spatial planning, our multidisciplinary teams deliver end-to-end solutions tailored to African institutional contexts.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3 class="value-title">Capacity Building &amp; Knowledge Transfer</h3>
+                        <p class="value-desc">We design and deliver training programmes, toolkits, and learning materials for government agencies, development partners, and civil society organisations. Our approach emphasises practical competence over theoretical instruction — equipping teams to sustain outcomes long after an engagement concludes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" aria-labelledby="partners-title">
+            <div class="about-container">
+                <h2 class="section-title" id="partners-title">Who We <span class="accent-text">Work With</span></h2>
+                <div class="about-body">
+                    <p>ImpactColab partners with national and sub-national governments, development finance institutions, international organisations, research bodies, and private sector clients across Africa. We are equally comfortable producing a policy brief for a DFI audience, designing a training curriculum for a government ministry, or advising on the legal and technical architecture of a circular economy initiative.</p>
+                    <p>Our network spans all 54 African countries, and our work is grounded in the realities of African institutions, markets, and communities — not imported frameworks applied without adaptation.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" aria-labelledby="why-title">
+            <div class="about-container">
+                <h2 class="section-title" id="why-title">Why <span class="accent-text">ImpactColab</span></h2>
+                <div class="about-body">
+                    <p>There is no shortage of consultancies operating in Africa. What is scarce is an integrated, multidisciplinary firm that combines rigorous research, legal precision, technical depth, and a genuine commitment to locally owned outcomes.</p>
+                    <p>ImpactColab is that practice. We turn insight into impact — reliably, collaboratively, and with Africa's long-term development trajectory at the centre of everything we do.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" aria-labelledby="team-title">
+            <div class="about-container">
+                <h2 class="section-title" id="team-title">The People Behind <span class="accent-text">ImpactColab</span></h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-avatar" aria-hidden="true">A</div>
+                        <p class="team-name">Placeholder Name</p>
+                        <p class="team-role">Placeholder Role</p>
+                        <p class="team-bio">Placeholder: A brief bio describing this team member's background, expertise, and what they bring to ImpactColab.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar" aria-hidden="true">B</div>
+                        <p class="team-name">Placeholder Name</p>
+                        <p class="team-role">Placeholder Role</p>
+                        <p class="team-bio">Placeholder: A brief bio describing this team member's background, expertise, and what they bring to ImpactColab.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar" aria-hidden="true">C</div>
+                        <p class="team-name">Placeholder Name</p>
+                        <p class="team-role">Placeholder Role</p>
+                        <p class="team-bio">Placeholder: A brief bio describing this team member's background, expertise, and what they bring to ImpactColab.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        <p class="footer-text">© 2026 ImpactColab Ltd. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+    <script>
+        // Animate value and team cards on scroll
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    cardObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.value-card, .team-card').forEach(card => {
+            cardObserver.observe(card);
+        });
+    </script>
+</body>
+</html>
