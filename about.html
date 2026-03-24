@@ -173,6 +173,13 @@
             line-height: 1.7;
         }
 
+        @media (max-width: 1024px) {
+            .values-grid,
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .about-hero {
                 padding: 8rem 2rem 4rem;
@@ -185,13 +192,6 @@
             .values-grid,
             .team-grid {
                 grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .values-grid,
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
