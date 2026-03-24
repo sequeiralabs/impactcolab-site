@@ -276,7 +276,7 @@ body.light-mode .theme-toggle .moon-icon {
 }
 
 .hero-title {
-    font-size: clamp(4rem, 15vw, 12rem);
+    font-size: clamp(2.5rem, 15vw, 12rem);
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.03em;
